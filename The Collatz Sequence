@@ -1,0 +1,7 @@
+def collatz():
+    number = int(input("Please enter a number: "))
+    if number / 2 == int(number / 2):
+        print(number /2)
+    else:
+        print(3 * number + 1)
+collatz()
