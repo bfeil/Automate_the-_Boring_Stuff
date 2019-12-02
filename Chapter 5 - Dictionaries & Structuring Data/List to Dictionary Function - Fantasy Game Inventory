@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+def displayInventory(inventory):
+    print('Inventory:')
+    itemTotal = 0
+    for k, v in inventory.items():
+        print(str(v) + ' ' +  k)
+        itemTotal += v
+    print('Total number of items: ' + str(itemTotal))
+        
+
+# For each item in the list, check if it is already in the dictionary
+# If it is, increase value by 1, if not, create key and set value to 1
+def addToInventory(inventory, addedItems):
+  for i in addedItems:
+        if i in inventory.keys():
+            inventory[i] += 1
+        if i not in inventory.keys():
+            inventory[i] = 1
+    return(inventory)   
+
+playerInventory = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
+dragonLoot = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby']
+playInventory = addToInventory(playerInventory, dragonLoot)
+displayInventory(playerInventory)
