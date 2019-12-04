@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+
+def printTable(dataTable):
+    #Find len of longest value in dataTable for rjust
+    colWidths = [0] * len(dataTable)
+    for i in range(len(colWidths)):
+        sortedData = sorted(dataTable[i-1], reverse=True, key = len)
+        colWidths[i-1] = len(sortedData[0])
+        sortedWidth = sorted(colWidths, reverse = True) 
+
+    #Print the table w/ each list corresponding to a column. Format text using rjust using length of the longest string in the given list of lists
+    for y in range(len(dataTable[0])):
+        for x in range(len(dataTable)):
+            print(dataTable[x][y].rjust(sortedWidth[0]), end = '')
+        print()
+
+tableData = [['apples', 'oranges', 'cherries', 'banana'],
+             ['Alice', 'Bob', 'Carol', 'David'],
+             ['dogs', 'cats', 'moose', 'goose']]
+
+printTable(tableData)
