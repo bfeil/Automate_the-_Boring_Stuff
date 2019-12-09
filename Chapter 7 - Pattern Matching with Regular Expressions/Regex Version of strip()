@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+# If no arguments are passed when calling the script, whitespace is removed from beginning and end of string. 
+# If argument is passed, remove argument from the string.
+
+import re
+import sys
+
+def stripTool(stringText):
+        if len(sys.argv) < 2:
+                spaceRegex = re.compile(r'(\s*)(.*)(\s*)')
+                print(spaceRegex.match(stringText).group(2))
+        else:
+                subRegex = re.compile(sys.argv[1])
+                print(subRegex.sub('', stringText))
