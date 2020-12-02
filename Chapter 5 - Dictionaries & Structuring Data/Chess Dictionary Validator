@@ -1,0 +1,69 @@
+test_board = {'1h': 'w_rook', '1g': 'w_knight', '1f': 'w_bishop', '1e': 'w_king', '1d':'w_queen', '1c': 'w_bishop', '1b':'w_knight', '1a':'w_rook', 
+            '2h':'w_pawn', '2g':'w_pawn','2f':'w_pawn','2e':'w_pawn','2d':'w_pawn','2c':'w_pawn','2b':'w_pawn','2a':'w_pawn',
+            '8h': 'b_rook', '8g': 'b_knight', '8f': 'b_bishop', '8e': 'b_queen', '8d':'b_king', '8c': 'b_bishop', '8b':'b_knight', '8a':'b_rook',
+            '7h':'b_pawn', '7g':'b_pawn','7f':'b_pawn','7e':'b_pawn','7d':'b_pawn','7c':'b_pawn','7b':'b_pawn','7a':'b_pawn'}
+
+def valid_chessboard(chessboard):
+    counted_dict = {}
+
+    # Count each piece, verify it is a valid possibility
+    for k, v in chessboard.items(): 
+        counted_dict[v] = counted_dict.setdefault(v, 0) + 1
+    
+    #If not valid, print error and total number of pieces
+    if counted_dict.get('w_king', 0) > 1:
+        print('Invalid board, more than 1 white king (' + str(counted_dict['w_king']) + ')')
+            
+    if counted_dict.get('b_king', 0) > 1:
+        print('Invalid board, more than 1 black king(' + str(counted_dict['b_king']) + ')')
+            
+    if counted_dict.get('w_queen', 0) > 1:
+        print('Invalid board, more than 1 white queen(' + str(counted_dict['w_queen']) + ')')
+            
+    if counted_dict.get('b_queen', 0) > 1:
+        print('Invalid board, more than 1 black queen(' + str(counted_dict['b_queen']) + ')')
+            
+    if counted_dict.get('w_rook', 0) > 2:
+        print('Invalid board, more than 2 white rooks(' + str(counted_dict['w_rook']) + ')')
+            
+    if counted_dict.get('b_rook', 0)> 2:
+        print('Invalid board, more than 2 black rooks(' + str(counted_dict['b_rook']) + ')')
+            
+    if counted_dict.get('w_bishop', 0) > 2:
+        print('Invalid board, more than 2 white bishops(' + str(counted_dict['w_bishop']) + ')')
+            
+    if counted_dict.get('b_bishop', 0) > 2:
+        print('Invalid board, more than 2 black bishops(' + str(counted_dict['b_bishop']) + ')')
+            
+    if counted_dict.get('w_knight', 0) > 2:
+        print('Invalid board, more than 2 white knights(' + str(counted_dict['w_knight']) + ')')
+            
+    if counted_dict.get('b_knight', 0) > 2:
+        print('Invalid board, more than 2 black knights(' + str(counted_dict['b_knight']) + ')')
+            
+    if counted_dict.get('w_pawn', 0) > 8:
+        print('Invalid board, more than 8 white pawns(' + str(counted_dict['w_pawn']) + ')')
+            
+    if counted_dict.get('b_pawn', 0) > 8:
+        print('Invalid board, more than 8 black pawns(' + str(counted_dict['b_pawn']) + ')')
+    
+    # Create list of all piece locations
+    piece_locations = []
+    for k in chessboard.keys():
+        piece_locations.append(k)
+
+    # If the location is not valid, print an error with the offending location:
+    valid_locations = ['1a', '2a', '3a', '4a', '5a', '6a', '7a', '8a',
+                    '1b', '2b', '3b', '4b', '5b', '6b', '7b', '8b',
+                    '1c', '2c', '3c', '4c', '5c', '6c', '7c', '8c',
+                    '1d', '2d', '3d', '4d', '5d', '6d', '7d', '8d',
+                    '1e', '2e', '3e', '4e', '5e', '6e', '7e', '8e',
+                    '1f', '2f', '3f', '4f', '5f', '6f', '7f', '8f',
+                    '1g', '2g', '3g', '4g', '5g', '6g', '7g', '8g',
+                    '1h', '2h', '3h', '4h', '5h', '6h', '7h', '8h',]
+    for x in (piece_locations):
+        if x not in valid_locations:
+            print('piece not located in valid position (' + x + ')')
+
+valid_chessboard(test_board)
+        
