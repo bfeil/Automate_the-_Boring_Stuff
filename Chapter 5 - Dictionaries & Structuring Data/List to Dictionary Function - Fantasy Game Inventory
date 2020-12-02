@@ -15,7 +15,7 @@ def addToInventory(inventory, addedItems):
   for i in addedItems:
         if i in inventory.keys():
             inventory[i] += 1
-        if i not in inventory.keys():
+        else:
             inventory[i] = 1
     return(inventory)   
 
